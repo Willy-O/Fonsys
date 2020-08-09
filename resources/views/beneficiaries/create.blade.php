@@ -11,7 +11,7 @@
                 <label for="name">Nombre</label>
                 <input type="text" name="name" id="name" max="20" value="{{ old('name')}}">
                 @if ($errors->has('name'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('name') }}</strong>
                     </span>
                 @endif
@@ -21,7 +21,7 @@
                 <label for="lastName">Apellido</label>
                 <input type="text" name="lastName" id="lastName" max="20" value="{{ old('lastName')}}">
                 @if ($errors->has('lastName'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('lastName') }}</strong>
                     </span>
                 @endif
@@ -41,7 +41,7 @@
                 <label for="dateBorn">Fecha de nacimiento</label>
                 <input type="date" name="dateBorn" id="dateBorn" value="{{ old('dateBorn')}}">
                 @if ($errors->has('dateBorn'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('dateBorn') }}</strong>
                     </span>
                 @endif
@@ -51,7 +51,7 @@
                 <label for="email">Correo</label>
                 <input type="email" name="email" id="email" max="50" value="{{ old('email')}}">
                 @if ($errors->has('email'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @endif
@@ -69,7 +69,7 @@
                 <label for="cellPhone">Número celular</label>
                 <input type="tel" name="cellPhone" id="cellPhone" max="11" pattern="[0-9]" value="{{ old('cellPhone')}}">
                 @if ($errors->has('cellPhone'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('cellPhone') }}</strong>
                     </span>
                 @endif
@@ -79,7 +79,7 @@
                 <label for="homePhone">Número local</label>
                 <input type="tel" name="homePhone" id="homePhone" max="11" pattern="[0-9]" value="{{ old('homePhone')}}">
                 @if ($errors->has('homePhone'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('homePhone') }}</strong>
                     </span>
                 @endif
@@ -121,7 +121,7 @@
                 <label for="workInstitute">Institución pública en la que trabaja</label>
                 <input type="text" name="workInstitute" id="workInstitute" max="50" value="{{ old('workInstitute')}}">
                 @if ($errors->has('workInstitute'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('workInstitute') }}</strong>
                     </span>
                 @endif
@@ -131,7 +131,7 @@
                 <label for="conmunity">Comuna en la que vive</label>
                 <input type="text" name="conmunity" id="conmunity" max="50" value="{{ old('conmunity')}}">
                 @if ($errors->has('conmunity'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('conmunity') }}</strong>
                     </span>
                 @endif
@@ -149,7 +149,7 @@
                 <label for="financeType">Tipo de financiamiento</label>
                 <input type="text" name="financeType" id="financeType" value="{{ old('financeType')}}">
                 @if ($errors->has('financeType'))
-                    <span class="helb-block">
+                    <span class="help-block">
                         <strong>{{ $errors->first('financeType') }}</strong>
                     </span>
                 @endif

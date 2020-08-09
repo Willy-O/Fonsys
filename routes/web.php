@@ -42,3 +42,13 @@ Route::group(['prefix' => 'beneficiaries'], function(){
     Route::put('{beneficiary}', 'BeneficiariesController@update')->name('beneficiaries.update');
     Route::delete('{beneficiary}', 'BeneficiariesController@destroy')->name('beneficiaries.destroy');
 });
+
+Route::group(['prefix' => 'users'], function(){
+    Route::get('/', 'UsersController@index')->name('users.index');
+    Route::get('create', 'UsersController@create')->name('users.create');
+    Route::post('/', 'UsersController@store')->name('users.store');
+    Route::get('{beneficiary}', 'UsersController@show')->name('users.show');
+    Route::get('{beneficiary}/edit', 'UsersController@edit')->name('users.edit');
+    Route::put('{beneficiary}', 'UsersController@update')->name('users.update');
+    Route::delete('{beneficiary}', 'UsersController@destroy')->name('users.destroy');
+});
