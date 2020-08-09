@@ -30,16 +30,11 @@ class BeneficiariesController extends Controller
     /**
      * Store a newly created resource in storage.
      * 
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreBeneficiary|Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBeneficiary $request)
     {
-        $this->validate($request, [
-            'name' => 'required|min:3|unique:beneficiaries',
-            
-        ]);
-
         $beneficiary = new Beneficiary;
         $beneficiary->name = $request->get('name');
         $beneficiary->save();
