@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
-<a class="navbar-brand" href="#">Inicio</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light col-12" id="navbar">
+<a class="navbar-brand" href="/">Inicio</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,7 +15,7 @@
         <a class="dropdown-item" href="{{ route('users.create') }}">Registrar</a>
           <a class="dropdown-item" href="#">Buscar</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="{{ route('users.index')}}">Lista</a>
         </div>
       </li>
 

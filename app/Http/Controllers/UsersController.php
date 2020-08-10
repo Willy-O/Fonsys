@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UsersController extends Controller
 {
@@ -13,7 +14,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::orderBy('name', 'asc')->get();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -39,6 +42,7 @@ class UsersController extends Controller
         $user->lastName = $request->get('lastName');
         $user->cedula = $request->get('cedula');
         $user->userName = $request->get('userName');
+        $user->password = $request->get('password');
         $user->email = $request->get('email');
         $user->rol = $request->get('rol');
         $user->save();

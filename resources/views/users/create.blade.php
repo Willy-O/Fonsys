@@ -71,11 +71,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rol">Rol del usuario</label>
-                        <input type="text" name="rol" id="rol" max="20" value="{{ old('rol')}}">
+                        <label for="rol">Rol de usuario</label>
+                        <select name="rol" id="rol">
+                            <option value="administrador">Administrador</option>
+                            <option value="gerenteDeProyecto">Gerente de proyecto</option>
+                            <option value="analistaDeGestionDeProyectos">Analista de gestión de proyectos</option>
+                            <option value="gerenteDePlanificaciónPresupuestoYOrganización">Gerente de planificación, presupuesto y organización</option>
+                            <option value="consultorJuridico">Consultor juridico</option>
+                            <option value="coordinadorDeSeguimientoYControl">Coordinador de seguimiento y control</option>
+                            <option value="coordinadorDeCierreYDifusion">Coordinador de cierre y difusión</option>
+                            <option value="auditoria">Auditoría</option>
+                        </select>
                         @if ($errors->has('rol'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('rol') }}</strong>
+                                <strong>{{ $errors->first('area') }}</strong>
                             </span>
                         @endif
                     </div>
