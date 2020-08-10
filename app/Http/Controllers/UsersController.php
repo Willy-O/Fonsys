@@ -34,7 +34,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->get('name');
+        $user->lastName = $request->get('lastName');
+        $user->cedula = $request->get('cedula');
+        $user->userName = $request->get('userName');
+        $user->email = $request->get('email');
+        $user->rol = $request->get('rol');
+        $user->save();
+
+        return redirect()->route('beneficiaries.show', ['beneficiary' => $beneficiary->id]);
     }
 
     /**
