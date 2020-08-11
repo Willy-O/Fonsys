@@ -1,7 +1,4 @@
-@extends('layouts.header')
-    @section('tittle')
-    @endsection
-
+@extends('layouts.app')
     @section('content')
         <form action="">
             <h1>no hay nada</h1>

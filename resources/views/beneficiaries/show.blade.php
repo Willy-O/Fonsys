@@ -1,7 +1,5 @@
-@extends('layouts.header')
-    @section('tittle')
-        Lista de beneficiarios
-    @endsection
+@extends('layouts.app')
+
 
     @section('content')
         <h1>{{ $beneficiary->name}}</h1>

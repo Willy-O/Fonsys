@@ -1,7 +1,4 @@
-@extends('layouts.header')
-@section('tittle')
-    Proyectos
-@endsection
+@extends('layouts.app')
 
 @section('content')
     <h1>Datos del proyecto</h1>

@@ -1,6 +1,4 @@
-@extends('layouts.header')
-    @section('tittle')
-    @endsection
+@extends('layouts.app')
 
     @section('content')
         <h1>Beneficiario</h1>

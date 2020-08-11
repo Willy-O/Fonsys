@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (  )  {
-    return view('index');
+    return view('home');
 });
 
 // Route::group(['prefix' => 'users'], function(){
@@ -92,3 +92,10 @@ Route::group(['prefix' => 'clousures'], function(){
     Route::put('{clousure}', 'ClousuresController@update')->name('clousures.update');
     Route::delete('{clousure}', 'ClousuresController@destroy')->name('clousures.destroy');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

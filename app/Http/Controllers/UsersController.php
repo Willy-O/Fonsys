@@ -47,7 +47,7 @@ class UsersController extends Controller
         $user->rol = $request->get('rol');
         $user->save();
 
-        return redirect()->route('beneficiaries.show', ['beneficiary' => $beneficiary->id]);
+        return redirect()->route('users.show', ['user' => $user->id]);
     }
 
     /**

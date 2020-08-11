@@ -1,7 +1,5 @@
-@extends('layouts.header')
-@section('tittle')
-    Seguimiento de proyecto
-@endsection 
+@extends('layouts.app')
+
 
 @section('content')
     <h1>Cierre de proyecto</h1>
