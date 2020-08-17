@@ -13,7 +13,7 @@ class StoreClousure extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreClousure extends FormRequest
     public function rules()
     {
         return [
-            //
+            'results' => 'required|min:3|string',
+            'efects' => 'required|min:3|string',
         ];
     }
 }

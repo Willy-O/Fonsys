@@ -2,27 +2,44 @@
 
 
 @section('content')
-    <h1>Seguimiento de proyecto</h1>
-    <form action="{{ route('trackings.store')}}">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Seguimiento de proyecto') }}</div>
 
-        <div class="form-group">
-            <label for="ticket">Exposición de motivos</label>
-            <input type="text" name="ticket" id="ticket" max="20" value="{{ old('ticket')}}">
-            @if ($errors->has('ticket'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('ticket') }}</strong>
-                </span>
-            @endif
-        </div>
+                <div class="card-body">
+                    <form action="{{ route('trackings.store')}}" method="POST">
+                        {{ csrf_field() }}
 
-        <div class="form-group">
-            <label for="files">Archivos</label>
-            <input type="text" name="files" id="files" max="20" value="{{ old('files')}}">
-            @if ($errors->has('files'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('files') }}</strong>
-                </span>
-            @endif
+
+                        <div class="form-group row">
+                            <label for="ticket" class="col-md-4 col-form-label text-md-right">Exposición de motivos</label>
+
+                            <div class="col-md-6">
+                                    <textarea name="ticket" class="form-control @error('ticket') is-invalid @enderror" id="ticket" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="files" class="col-md-4 col-form-label text-md-right">Archivos</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control @error('tittle') is-invalid @enderror" name="files" id="files" max="20" value="{{ old('files')}}">
+
+                                @if ($errors->has('files'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('files') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        @include('partials.inputSave')
+                    </form>
+                </div>
+
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
 @endsection

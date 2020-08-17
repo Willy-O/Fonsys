@@ -13,7 +13,7 @@ class StoreProjectInfo extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreProjectInfo extends FormRequest
     public function rules()
     {
         return [
-            //
+            'summary' => 'required|min:5|string',
+            'time' => 'required|string',
+            'problem' => 'required|min:5|string',
+            'precedent' => 'required|min:5|string',
+            'justification' => 'required|min:5|string',
+            'generalObjective' => 'required|min:5|string',
+            'specificObjective' => 'required|min:5|string',
+            'hopedResults' => 'required|min:5|string',
+            'hopedEfects' => 'required|min:5|string',
         ];
     }
 }

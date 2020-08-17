@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Beneficiary;
+use App\StoreBeneficiary;
 
 class BeneficiariesController extends Controller
 {
@@ -33,13 +34,32 @@ class BeneficiariesController extends Controller
      * @param  StoreBeneficiary|Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBeneficiary $request)
+    public function store(Request $request)
     {
         $beneficiary = new Beneficiary;
         $beneficiary->name = $request->get('name');
+        $beneficiary->lastName = $request->get('lastName');
+        $beneficiary->gender = $request->get('gender');
+        $beneficiary->dateBorn = $request->get('dateBorn');
+        $beneficiary->email = $request->get('email');
+        $beneficiary->homeAddress = $request->get('homeAddress');
+        $beneficiary->cellPhone = $request->get('cellPhone');
+        $beneficiary->homePhone = $request->get('homePhone');
+        $beneficiary->education = $request->get('education');
+        $beneficiary->ethnicGroup = $request->get('ethnicGroup');
+        $beneficiary->workAddress = $request->get('workAddress');
+        $beneficiary->publicWorker = $request->get('publicWorker');
+        $beneficiary->workInstitute = $request->get('workInstitute');
+        $beneficiary->conmunity = $request->get('conmunity');
+        $beneficiary->finance = $request->get('finance');
+        $beneficiary->cedula = $request->get('cedula');
+        $beneficiary->financeType = $request->get('financeType');
+
         $beneficiary->save();
 
-        return redirect()->route('beneficiaries.show', ['beneficiary' => $beneficiary->id]);
+        return redirect()->route('beneficiaries.show',   ['beneficiary' => $beneficiary->id]);
+
+        // return $beneficiary->id;
     }
 
     /**

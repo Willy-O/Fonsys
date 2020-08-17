@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\StoreProjectData;
+use App\ProjectInfo;
 
 class ProjectsInfoController extends Controller
 {
@@ -29,12 +31,26 @@ class ProjectsInfoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreProjectInfo|Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $projectInfo = new ProjectInfo;
+
+        $projectInfo->summary = $request->get('summary');
+        $projectInfo->time = $request->get('time');
+        $projectInfo->problem = $request->get('problem');
+        $projectInfo->precedent = $request->get('precedent');
+        $projectInfo->justification = $request->get('justification');
+        $projectInfo->generalObjective = $request->get('generalObjective');
+        $projectInfo->specificObjective = $request->get('specificObjective');
+        $projectInfo->hopedResults = $request->get('hopedResults');
+        $projectInfo->hopedEfects = $request->get('hopedEfects');
+
+        $projectInfo->save();
+
+        return $projectInfo->id;
     }
 
     /**

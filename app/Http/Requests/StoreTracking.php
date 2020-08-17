@@ -13,7 +13,7 @@ class StoreTracking extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreTracking extends FormRequest
     public function rules()
     {
         return [
-            //
+            'ticket' => 'required|min:3|string',
+            'files' => 'required|min:4|string',
         ];
     }
 }

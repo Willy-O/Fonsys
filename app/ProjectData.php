@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectData extends Model
 {
     protected $table = 'projectsData';
+    public $timestamps = false;
+
 
     protected $fillable = [
-        'tittle', 'sum', 'objective', 'addressLocation', 'area', 'justification', 
+        'tittle', 'sum', 'objective', 'addressLocation', 'area', 'justification', 'countPoint',
     ];
 
     public function Beneficiary()

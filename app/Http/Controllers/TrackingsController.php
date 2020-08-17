@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tracking;
+use App\StoreTracking;
 
 class TrackingsController extends Controller
 {
@@ -34,7 +36,14 @@ class TrackingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tracking = new Tracking;
+
+        $tracking->ticket = $request->get('ticket');
+        $tracking->files = $request->get('files');
+
+        $tracking->save();
+
+        return $tracking->id;
     }
 
     /**

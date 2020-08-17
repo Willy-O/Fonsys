@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Clousure;
+use App\StoreClousure;
 
 class ClousuresController extends Controller
 {
@@ -29,12 +31,20 @@ class ClousuresController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreClousure|Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $clousure = new Clousure;
+
+        $clousure->results = $request->get('results');
+        $clousure->efects = $request->get('efects');
+
+        $clousure->save();
+
+        return $clousure->id;
+        // dd($clousure->all());
     }
 
     /**

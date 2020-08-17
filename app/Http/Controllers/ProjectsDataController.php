@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ProjectData;
+use App\StoreProjectData;
 
 class ProjectsDataController extends Controller
 {
@@ -29,12 +31,23 @@ class ProjectsDataController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreProjectData|Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $projectData = new ProjectData;
+        $projectData->tittle = $request->get('tittle');
+        $projectData->sum = $request->get('sum');
+        $projectData->objective = $request->get('objective');
+        $projectData->addressLocation = $request->get('addressLocation');
+        $projectData->area = $request->get('area');
+        $projectData->justification = $request->get('justification');
+        $projectData->countPoint = $request->get('countPoint');
+
+        $projectData->save();
+
+        return $projectData->id;    
     }
 
     /**

@@ -29,5 +29,8 @@
         </main>
     </div>
 </body>
-    <script src="{{ asset('js/app.js')}}"></script>
+    {{-- <script src="{{ asset('js/app.js')}}"></script> --}}
+    <script src="{{ asset('js/canvasjs.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js')}}"></script>
 </html>

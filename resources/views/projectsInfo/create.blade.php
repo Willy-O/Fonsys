@@ -1,98 +1,104 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Información del proyecto</h1>
-    <form action="{{ route('projectsData.store')}}" method="POST">
-        {{ csrf_field() }}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Información de proyecto') }}</div>
 
-        <div class="form-group">
-            <label for="summary">Resumen</label>
-            <input type="text" name="summary" id="summary" max="20" value="{{ old('summary')}}">
-            @if ($errors->has('summary'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('summary') }}</strong>
-                </span>
-            @endif
-        </div>
+                <div class="card-body">
+                    <form action="{{ route('projectsInfo.store')}}" method="POST">
+                        {{ csrf_field() }}
 
-        <div class="form-group">
-            <label for="time">Tiempo</label>
-            <input type="text" name="time" id="time" max="20" value="{{ old('time')}}">
-            @if ($errors->has('time'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('time') }}</strong>
-                </span>
-            @endif
-        </div>
+                        <div class="form-group row">
+                            <label for="summary"  class="col-md-4 col-form-label text-md-right">Resumen</label>
+                            
+                            <div class="col-md-6">
+                                <textarea name="summary" class="form-control @error('summary') is-invalid @enderror" id="summary" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <label for="problem">Problema</label>
-            <input type="text" name="problem" id="problem" max="20" value="{{ old('problem')}}">
-            @if ($errors->has('problem'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('problem') }}</strong>
-                </span>
-            @endif
-        </div>
-        
-        <div class="form-group">
-            <label for="precedent">Presedentes</label>
-            <input type="text" name="precedent" id="precedent" max="20" value="{{ old('precedent')}}">
-            @if ($errors->has('precedent'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('precedent') }}</strong>
-                </span>
-            @endif
-        </div>
+                        <div class="form-group row">
+                            <label for="time"  class="col-md-4 col-form-label text-md-right">Tiempo</label>
+                            
+                            <div class="col-md-6">
+                                <select name="time" class="form-control @error('time') is-invalid @enderror" id="time">
+                                    <option value=""></option>
+                                    <option value="1 año">1 año</option>
+                                    <option value="3 años">3 años</option>
+                                    <option value="5 años">5 años</option>
+                                </select>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <label for="justification">Justificación</label>
-            <input type="text" name="justification" id="justification" max="20" value="{{ old('justification')}}">
-            @if ($errors->has('justification'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('justification') }}</strong>
-                </span>
-            @endif
-        </div>
+                        <div class="form-group row">
+                            <label for="problem"  class="col-md-4 col-form-label text-md-right">Problema</label>
+                           
+                            <div class="col-md-6">
+                                <textarea name="problem" class="form-control @error('problem') is-invalid @enderror" id="problem" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="precedent"  class="col-md-4 col-form-label text-md-right">Presedentes</label>
+                            
+                            <div class="col-md-6">
+                                <textarea name="precedent" class="form-control @error('precedent') is-invalid @enderror" id="precedent" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <label for="generalObjetive">Objetivo general</label>
-            <input type="text" name="generalObjetive" id="generalObjetive" max="20" value="{{ old('generalObjetive')}}">
-            @if ($errors->has('generalObjetive'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('generalObjetive') }}</strong>
-                </span>
-            @endif
-        </div>
+                        <div class="form-group row">
+                            <label for="justification"  class="col-md-4 col-form-label text-md-right">Justificación</label>
 
-        <div class="form-group">
-            <label for="specificObjective">Objetivos especificos</label>
-            <input type="text" name="specificObjective" id="specificObjective" max="20" value="{{ old('specificObjective')}}">
-            @if ($errors->has('specificObjective'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('specificObjective') }}</strong>
-                </span>
-            @endif
-        </div>
+                            <div class="col-md-6">
+                                <textarea name="justification" class="form-control @error('justification') is-invalid @enderror" id="justification" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <label for="hopedResults">Resultados esperados</label>
-            <input type="text" name="hopedResults" id="hopedResults" max="20" value="{{ old('hopedResults')}}">
-            @if ($errors->has('hopedResults'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('hopedResults') }}</strong>
-                </span>
-            @endif
-        </div>
+                        <div class="form-group row">
+                            <label for="generalObjective"  class="col-md-4 col-form-label text-md-right">Objetivo general</label>
 
-        <div class="form-group">
-            <label for="hopedEfects">Efectos esperados</label>
-            <input type="text" name="hopedEfects" id="hopedEfects" max="20" value="{{ old('hopedEfects')}}">
-            @if ($errors->has('hopedEfects'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('hopedEfects') }}</strong>
-                </span>
-            @endif
+                            <div class="col-md 6">
+                                <input type="text" class="form-control @error('generalObjective') is-invalid @enderror" name="generalObjective" id="generalObjective" max="20" value="{{ old('generalObjective')}}">
+                                
+                                @if ($errors->has('generalObjective'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('generalObjective') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="specificObjective"  class="col-md-4 col-form-label text-md-right">Objetivos especificos</label>
+                            
+                            <div class="col-md-6">
+                                <textarea name="specificObjective" class="form-control @error('specificObjective') is-invalid @enderror" id="specificObjective" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="hopedResults"  class="col-md-4 col-form-label text-md-right">Resultados esperados</label>
+                          
+                            <div class="col-md-6">
+                                <textarea name="hopedResults" class="form-control @error('hopedResults') is-invalid @enderror" id="hopedResults" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="hopedEfects"  class="col-md-4 col-form-label text-md-right">Efectos esperados</label>
+                            
+                            <div class="col-md-6">
+                                <textarea name="hopedEfects" class="form-control @error('hopedEfects') is-invalid @enderror" id="hopedEfects" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        @include('partials.inputSave')
+
+                    </form>
+                </div>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
 @endsection
