@@ -12,11 +12,6 @@
         <div class="form-group">
             <label for="lastName">Apellido</label>
             <input type="text" name="lastName" id="lastName" max="20" value="{{ $beneficiary->lastName }}" disabled>
-            @if ($errors->has('lastName'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('lastName') }}</strong>
-                </span>
-            @endif
         </div>
 
         <div class="form-group">
@@ -61,16 +56,12 @@
 
         <div class="form-group">
             <label for="education">Nivel academico</label>
-            <select name="education" id="education">
-                <option value="{{ $beneficiary->education}}">{{ $beneficiary->education}}</option>
-            </select>
+            <input type="text" name="education" id="education" max="11" pattern="[0-9]" value="{{ $beneficiary->education }}" disabled>
         </div>
 
         <div class="form-group">
             <label for="ethnicGroup">Grupo étnico</label>
-            <select name="ethnicGroup" id="ethnicGroup">
-                <option value="{{$beneficiary->ethnicGroup}}">{{$beneficiary->ethnicGroup}}</option>
-            </select>
+            <input type="text" name="ethnicGroup" id="ethnicGroup" max="11" pattern="[0-9]" value="{{ $beneficiary->ethnicGroup }}" disabled>
         </div>
 
         <div class="form-group">
@@ -93,7 +84,7 @@
 
         <div class="form-group">
             <label for="conmunity">Comuna en la que vive</label>
-            <input type="text" name="conmunity" id="conmunity" max="50" value="{{ $beneficiary->conmunity}}" disabled>
+            <input type="text" name="conmunity" id="conmunity" max="50" value="{{ $beneficiary->conmunity }}" disabled>
         </div>
 
         <div class="form-group">

@@ -14,7 +14,7 @@
                             <label for="results" class="col-md-4 col-form-label text-md-right">Resultados</label>
 
                             <div class="col-md-6">
-                                <textarea name="results" class="form-control @error('results') is-invalid @enderror" id="results" cols="30" rows="3">{{ $clousure->results }}</textarea>
+                                <textarea name="results" class="form-control @error('results') is-invalid @enderror" id="results" cols="30" rows="3" disabled>{{ $clousure->results }}</textarea>
                             </div>
                         </div>
 
@@ -22,7 +22,7 @@
                             <label for="efects" class="col-md-4 col-form-label text-md-right">Efectos</label>
 
                             <div class="col-md-6">
-                                <textarea name="efects" class="form-control @error('efects') is-invalid @enderror" id="efects" cols="30" rows="3">{{ $clousure->efects }}</textarea>
+                                <textarea name="efects" class="form-control @error('efects') is-invalid @enderror" id="efects" cols="30" rows="3" disabled>{{ $clousure->efects }}</textarea>
                             </div>
                         </div>
 
