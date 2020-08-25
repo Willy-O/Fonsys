@@ -54,7 +54,9 @@ class TrackingsController extends Controller
      */
     public function show($id)
     {
-        //
+        $tracking = Tracking::find($id);
+
+        return view('trackings.show', compact('tracking'));
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBeneficiary;
 use App\Beneficiary;
-use App\StoreBeneficiary;
 
 class BeneficiariesController extends Controller
 {
@@ -34,7 +35,7 @@ class BeneficiariesController extends Controller
      * @param  StoreBeneficiary|Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBeneficiary $request)
     {
         $beneficiary = new Beneficiary;
         $beneficiary->name = $request->get('name');

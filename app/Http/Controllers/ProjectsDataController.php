@@ -58,7 +58,9 @@ class ProjectsDataController extends Controller
      */
     public function show($id)
     {
-        //
+        $projectData = ProjectData::find($id);
+
+        return view('projectsData.show', compact('projectData'));
     }
 
     /**

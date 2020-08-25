@@ -55,7 +55,9 @@ class ClousuresController extends Controller
      */
     public function show($id)
     {
-        //
+        $clousure = Clousure::find($id);
+
+        return view('clousures.show', compact('clousure'));
     }
 
     /**
