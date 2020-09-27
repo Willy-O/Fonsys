@@ -11,8 +11,7 @@
                             {{ csrf_field() }}
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right" >Nombre</label>
-
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
                                 <div class="col-md-6">
                                     <input type="text" autocomplete="off" class="form-control @error('name') is-invalid @enderror" name="name" id="name" max="20" value="{{ old('name')}}">
 
@@ -21,12 +20,6 @@
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                                     @endif
-
-                                    {{-- @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror --}}
                                 </div>
                             </div>
 
@@ -48,7 +41,7 @@
                                 <label for="cedula" class="col-md-4 col-form-label text-md-right">Cedula</label>
 
                                 <div class="col-md-6">
-                                    <input type="number" autocomplete="off" name="cedula" id="cedula" class="form-control @error('cedula') is-invalid @enderror" min="0" pattern="[0-9]" maxlength="11" value="{{ old('cedula')}}">
+                                    <input type="number" autocomplete="off" name="cedula" id="cedula" class="form-control @error('cedula') is-invalid @enderror" min="0" pattern="[0-9]" max="99999999" maxlength="10" value="{{ old('cedula')}}">
 
                                     @if ($errors->has('cedula'))
                                         <span class="help-block">
@@ -62,13 +55,22 @@
                                 <label for="gender" class="col-md-4 col-form-label text-md-right">Genero</label>
                                 
                                 <div class="col-md-6">
-                                    <input type="radio" id="m" name="gender" value="male">
+                                    <input type="radio" id="m" name="gender" value="m">
                                     <label for="male">Masculino</label><br>
-                                    <input type="radio" id="f" name="gender" value="female">
+                                    <input type="radio" id="f" name="gender" value="f">
                                     <label for="female">Femenino</label><br>
-                                    <input type="radio" id="o" name="gender" value="other">
+                                    <input type="radio" id="o" name="gender" value="o">
                                     <label for="other">Other</label>
+
+
+                                    @if ($errors->has('gender'))
+                                        <br>
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('gender') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
+
                             </div>
 
                             <div class="form-group row">
@@ -103,7 +105,7 @@
                                 <label for="homeAddress" class="col-md-4 col-form-label text-md-right">Dirección de habitación</label>
 
                                 <div class="col-md-6">
-                                    <textarea name="homeAddress" class="form-control @error('homeAddress') is-invalid @enderror" id="homeAddress" cols="30" rows="3"></textarea>
+                                    <textarea name="homeAddress" class="form-control @error('homeAddress') is-invalid @enderror" id="homeAddress" cols="30" rows="3">{{ old('homeAddress')}}</textarea>
                                 </div>
                             </div>
 
@@ -111,9 +113,25 @@
                                 <label for="cellPhone" class="col-md-4 col-form-label text-md-right">Número celular</label>
 
                                 <div class="col-md-6">
-                                    <input type="number" autocomplete="off" name="cellPhone" class="form-control @error('cellPhone') is-invalid @enderror" id="cellPhone" min="0" maxlength="11" pattern="[0-9]" value="{{ old('cellPhone')}}">
-                                    
-                                    @if ($errors->has('cellPhone'))
+                                    <div class="row ml-1">                                     
+
+                                        <select name="codeCellPhone" class="form-control col-md-4 @error('codeCellPhone') is-invalid @enderror" id="codeCellPhone" value="{{ old('codeCellPhone')}}">
+                                            <option value="{{ old('codeCellPhone') }}">{{ old('codeCellPhone')}}</option>
+                                            @foreach ($codeCellPhone as $item)
+                                                <option value="0{{$item}}">0{{$item}}</option>
+                                            @endforeach
+                                        </select>
+                                        
+                                        <span class="col-md-1"></span>
+
+                                        <input type="number" autocomplete="off" name="cellPhone" class="form-control col-md-6 @error('cellPhone') is-invalid @enderror" id="cellPhone" min="0" max="9999999" maxlength="7" pattern="[0-9]" value="{{ old('cellPhone')}}">
+                                    </div>
+                                   
+                                    @if ($errors->has('codeCellPhone'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('codeCellPhone') }}</strong>
+                                        </span>
+                                    @else
                                         <span class="help-block">
                                             <strong>{{ $errors->first('cellPhone') }}</strong>
                                         </span>
@@ -123,11 +141,22 @@
 
                             <div class="form-group row">
                                 <label for="homePhone" class="col-md-4 col-form-label text-md-right">Número local</label>
-
                                 <div class="col-md-6">
-                                    <input type="number" autocomplete="off" name="homePhone" class="form-control @error('homePhone') is-invalid @enderror" id="homePhone" min="0" maxlength="11" pattern="[0-9]" value="{{ old('homePhone')}}">
-
-                                    @if ($errors->has('homePhone'))
+                                    <div class="row ml-1">
+                                        <select name="codeHomePhone" value="{{ old('codeHomePhone')}}" class="form-control col-md-4 @error('codeHomePhone') is-invalid @enderror" id="codeHomePhone">
+                                            <option value="{{ old('codeHomePhone')}}">{{ old('codeHomePhone')}}</option>
+                                            @foreach ($codeHomePhone as $item)
+                                                <option value="0{{$item}}">0{{$item}}</option>
+                                            @endforeach
+                                        </select>
+                                            <span class="col-md-1"></span>
+                                        <input type="number" autocomplete="off" name="homePhone" class="form-control col-md-6 @error('homePhone') is-invalid @enderror" id="homePhone" min="0" max="9999999" maxlength="7" pattern="[0-9]" value="{{ old('homePhone')}}">
+                                    </div>
+                                    @if ($errors->has('codeHomePhone'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('codeHomePhone') }}</strong>
+                                        </span>
+                                    @else
                                         <span class="help-block">
                                             <strong>{{ $errors->first('homePhone') }}</strong>
                                         </span>
@@ -137,15 +166,18 @@
 
                             <div class="form-group row">
                                 <label for="education" class="col-md-4 col-form-label text-md-right">Nivel academico</label>
-
                                 <div class="col-md-6">
                                     <select name="education" class="form-control @error('education') is-invalid @enderror" id="education">
-                                        <option value=""></option>
-                                        <option value="primaria">primaria</option>
-                                        <option value="bachiller">bachiller</option>
-                                        <option value="universitario">universitaria</option>
-                                        <option value="postgrado">Post grado</option>
+                                        <option value="{{ old('education')}}">{{ old('education')}}</option>
+                                        @foreach ($education as $item)
+                                            <option value="{{ $item }}">{{ $item }}</option>
+                                        @endforeach
                                     </select>
+                                    @if ($errors->has('education'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('education') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -154,11 +186,16 @@
 
                                 <div class="col-md-6">
                                     <select name="ethnicGroup" class="form-control @error('ethnicGroup') is-invalid @enderror" id="ethnicGroup">
-                                        <option value=""></option>
-                                        <option value="ad">ad</option>
-                                        <option value="da">da</option>
-                                        <option value="aa">aa</option>
+                                        <option value="{{ old('ethnicGroup')}}">{{ old('ethnicGroup')}}</option>
+                                        @foreach ($ethnicGroup as $item)
+                                            <option value="{{ $item }}">{{ $item }}</option>
+                                        @endforeach
                                     </select>
+                                    @if ($errors->has('ethnicGroup'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('ethnicGroup') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -166,19 +203,29 @@
                                 <label for="workAddress" class="col-md-4 col-form-label text-md-right">Dirección de trabajo</label>
 
                                 <div class="col-md-6">
-                                    <textarea name="workAddress" class="form-control @error('workAddress') is-invalid @enderror" id="workAddress" cols="30" rows="3"></textarea>
+                                    <textarea name="workAddress" class="form-control @error('workAddress') is-invalid @enderror" id="workAddress" cols="30" rows="3">{{ old('workAddress')}}</textarea>
                                 </div>
+                                @if ($errors->has('workAddress'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('workAddress') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="form-group row">
                                 <label for="publicWorker" class="col-md-4 col-form-label text-md-right">¿Trabajador público?</label>
 
                                 <div class="col-md-6">
-                                        <input type="radio" id="1" name="publicWorker" value="1">
-                                    <label for="1">Si</label><br>
-                                        <input type="radio" id="0" name="publicWorker" value="0">
-                                    <label for="0">No</label><br>
+                                        <input type="radio" id="SI" name="publicWorker" value="SI">
+                                    <label for="SI">SI</label><br>
+                                        <input type="radio" id="NO" name="publicWorker" value="NO">
+                                    <label for="NO">NO</label><br>
                                 </div>
+                                @if ($errors->has('workAddress'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('workAddress') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="form-group row">
@@ -210,13 +257,18 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="finance" class="col-md-4 col-form-label text-md-right">¿Ha optenido una subvención anteriormente?</label>
+                                <label for="finance" class="col-md-4 col-form-label text-md-right @error('finance') is-invalid @enderror">¿Ha optenido una subvención anteriormente?</label>
 
                                 <div class="col-md-6">
-                                    <input type="radio" id="1" name="finance" value="1">
-                                    <label for="1">Si</label><br>
-                                    <input type="radio" id="0" name="finance" value="0">
-                                    <label for="0">No</label><br>
+                                    <input type="radio" name="finance" value="SI">
+                                    <label for="SI">SI</label><br>
+                                    <input type="radio" name="finance" value="NO">
+                                    <label for="NO">NO</label><br>
+                                    @if ($errors->has('finance'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('finance') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             

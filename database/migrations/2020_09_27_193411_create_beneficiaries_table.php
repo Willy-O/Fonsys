@@ -26,15 +26,15 @@ class CreateBeneficiariesTable extends Migration
             $table->integer('codeHomePhone',$autoIncrement = false, 4);
             $table->integer('homePhone',$autoIncrement = false, 7)->unique();
             $table->string('education', 100);
-            $table->string('ethnicGroup', 100);
-            $table->text('workAddress', 300);
+            $table->string('ethnicGroup', 100)->nullable();
+            $table->text('workAddress', 300)->nullable();
             $table->string('publicWorker',2);
-            $table->text('workInstitute', 300);
+            $table->text('workInstitute', 300)->nullable();
             $table->string('conmunity', 300);
             $table->string('finance', 2);
             $table->string('financeType');
-            $table->string('gender', 1);
-            $table->integer('cedula',$autoIncrement = false, 9)->unique();
+            $table->string('gender', 2);
+            $table->integer('cedula',$autoIncrement = false, 10)->unique();
 
             // Foreing keys
 

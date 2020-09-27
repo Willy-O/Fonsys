@@ -28,7 +28,23 @@ class BeneficiariesController extends Controller
      */
     public function create()
     {
-        return view('beneficiaries.create');
+        $codeHomePhone = [
+            248, 281, 282, 283, 292, 244, 273, 278, 284, 285, 286, 288, 289, 241, 242, 243, 245, 249, 258, 287, 212, 259, 268, 269, 279, 235, 238, 246, 247, 251, 252, 253, 271, 274, 275, 234, 239, 291, 295, 255, 256, 257, 272, 293, 294, 276, 277, 254, 261, 262, 263, 264, 265, 266, 267,
+        ];
+
+        $codeCellPhone = [
+            414, 424, 412, 426, 416
+        ];
+
+        $education = [
+            'Primaria', 'Bachiller', 'Universitaria', 'Postgrado'
+        ];
+
+        $ethnicGroup = [
+
+        ];
+
+        return view('beneficiaries.create', compact('codeHomePhone', 'codeCellPhone', 'education', 'ethnicGroup'));
     }
 
     /**
@@ -39,14 +55,19 @@ class BeneficiariesController extends Controller
      */
     public function store(StoreBeneficiary $request)
     {
+        // dd($request);
         $beneficiary = new Beneficiary;
+        $validated = $request->validated();
+        // $beneficiary = $request->all();
         $beneficiary->name = $request->get('name');
         $beneficiary->lastName = $request->get('lastName');
         $beneficiary->gender = $request->get('gender');
         $beneficiary->dateBorn = $request->get('dateBorn');
         $beneficiary->email = $request->get('email');
         $beneficiary->homeAddress = $request->get('homeAddress');
+        $beneficiary->codeCellPhone = $request->get('codeCellPhone');
         $beneficiary->cellPhone = $request->get('cellPhone');
+        $beneficiary->codeHomePhone = $request->get('codeHomePhone');
         $beneficiary->homePhone = $request->get('homePhone');
         $beneficiary->education = $request->get('education');
         $beneficiary->ethnicGroup = $request->get('ethnicGroup');
@@ -57,7 +78,6 @@ class BeneficiariesController extends Controller
         $beneficiary->finance = $request->get('finance');
         $beneficiary->cedula = $request->get('cedula');
         $beneficiary->financeType = $request->get('financeType');
-
         $beneficiary->save();
 
         return redirect()->route('beneficiaries.show',   ['beneficiary' => $beneficiary->id]);
