@@ -16,7 +16,9 @@ class BeneficiariesController extends Controller
      */
     public function index()
     {
-        return view('beneficiaries.index');
+        $beneficiaries = Beneficiary::paginate(4);
+
+        return view('beneficiaries.index', compact('beneficiaries'));
     }
 
     /**
@@ -84,7 +86,8 @@ class BeneficiariesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $beneficiary = Beneficiary::where('id', $id)->first();
+        return view('beneficiary.edit', compact('beneficiary'));
     }
 
     /**
@@ -96,7 +99,11 @@ class BeneficiariesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $beneficiary = Beneficiary::where('id', $id)->first();
+        $beneficiary = $request->all();
+        $beneficiary->save();
+
+        return redirect()->route('inmuebles', $beneficiary);
     }
 
     /**
