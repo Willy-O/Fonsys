@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Tracking;
-use App\StoreTracking;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreTracking;
 
 class TrackingsController extends Controller
 {
@@ -15,7 +15,8 @@ class TrackingsController extends Controller
      */
     public function index()
     {
-        return view('trackings.index');
+        $trackings = Tracking::paginate(4);
+        return view('trackings.index', compact('trackings'));
     }
 
     /**
@@ -34,8 +35,10 @@ class TrackingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTracking $request)
     {
+        $validated = $request->validated();
+
         $tracking = new Tracking;
 
         $tracking->ticket = $request->get('ticket');
@@ -43,7 +46,7 @@ class TrackingsController extends Controller
 
         $tracking->save();
 
-        return $tracking->id;
+        return redirect()->route('trackings.show',   ['tracking' => $tracking->id]);
     }
 
     /**
@@ -67,7 +70,8 @@ class TrackingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tracking = Tracking::where('id', $id)->first();
+        return view('trackings.edit', compact('tracking'));
     }
 
     /**
@@ -79,7 +83,7 @@ class TrackingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

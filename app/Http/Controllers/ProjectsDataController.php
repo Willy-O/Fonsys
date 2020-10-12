@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\ProjectData;
-use App\StoreProjectData;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreProjectData;
 
 class ProjectsDataController extends Controller
 {
@@ -15,7 +15,8 @@ class ProjectsDataController extends Controller
      */
     public function index()
     {
-        return view('projectsData.index');
+        $projectsData = ProjectData::paginate(8);
+        return view('projectsData.index', compact('projectsData'));
     }
 
     /**
@@ -25,7 +26,11 @@ class ProjectsDataController extends Controller
      */
     public function create()
     {
-        return view('projectsData.create');
+        $area = [
+            'Agroalimentario', 'Farmaceutico', 'Industrial', 'Esportador', 'Economia comunal', 'Hidrocarburos', 'Petroquimico', 'Minero', 'Turismo', 'Construccion', 'Forestal', 'Industrial militar', 'Telecomunicaciones e informatica', 'Banca y finanzas', 'Industrias basicas'
+        ];
+
+        return view('projectsData.create', compact('area'));
     }
 
     /**
@@ -34,8 +39,10 @@ class ProjectsDataController extends Controller
      * @param  StoreProjectData|Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectData $request)
     {
+        $validated = $request->validated();
+
         $projectData = new ProjectData;
         $projectData->tittle = $request->get('tittle');
         $projectData->sum = $request->get('sum');
@@ -47,7 +54,7 @@ class ProjectsDataController extends Controller
 
         $projectData->save();
 
-        return $projectData->id;    
+        return redirect()->route('projectsData.show',   ['projectData' =>  $projectData->id]); 
     }
 
     /**
@@ -71,7 +78,8 @@ class ProjectsDataController extends Controller
      */
     public function edit($id)
     {
-        //
+        $projectData = ProjectData::where('id', $id)->first();
+        return view('projectsData.edit', compact('projectData'));
     }
 
     /**

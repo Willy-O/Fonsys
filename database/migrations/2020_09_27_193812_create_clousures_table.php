@@ -16,8 +16,8 @@ class CreateClousuresTable extends Migration
         Schema::create('clousures', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('results');
-            $table->text('efects');
+            $table->text('results', 300);
+            $table->text('efects', 300);
         });
     }
 

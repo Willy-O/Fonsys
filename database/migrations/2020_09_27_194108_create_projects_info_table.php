@@ -18,13 +18,13 @@ class CreateProjectsInfoTable extends Migration
             $table->timestamps();
             $table->text('summary');
             $table->integer('time', $autoIncrement = false);
-            $table->text('problem');
-            $table->text('precedent');
-            $table->text('justification');
-            $table->text('generalObjective');
-            $table->text('specificObjective');
-            $table->text('hopedResults');
-            $table->text('hopedEfects');
+            $table->text('problem', 300);
+            $table->text('precedent', 300);
+            $table->text('justification', 300);
+            $table->text('generalObjective', 300);
+            $table->text('specificObjective', 300);
+            $table->text('hopedResults', 300);
+            $table->text('hopedEfects', 300);
         });
     }
 

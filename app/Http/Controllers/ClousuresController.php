@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Clousure;
-use App\StoreClousure;
+use App\ProjectData;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreClousure;
+
 
 class ClousuresController extends Controller
 {
@@ -15,7 +17,9 @@ class ClousuresController extends Controller
      */
     public function index()
     {
-        return view('clousures.index');
+        $clousures = Clousure::paginate(4);
+
+        return view('clousures.index', compact('clousures'));
     }
 
     /**
@@ -25,7 +29,9 @@ class ClousuresController extends Controller
      */
     public function create()
     {
-        return view('clousures.create');
+        $titles = ProjectData::pluck('tittle', 'id');
+        // dd($titles);
+        return view('clousures.create', compact('titles'));
     }
 
     /**
@@ -34,17 +40,18 @@ class ClousuresController extends Controller
      * @param  StoreClousure|Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClousure $request)
     {
         $clousure = new Clousure;
+
+        $validated = $request->validated();
 
         $clousure->results = $request->get('results');
         $clousure->efects = $request->get('efects');
 
         $clousure->save();
 
-        return $clousure->id;
-        // dd($clousure->all());
+        return redirect()->route('clousures.show', compact('clousure'));
     }
 
     /**
@@ -68,7 +75,8 @@ class ClousuresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $clousure = Clousure::where('id', $id)->first();
+        return view('clousures.edit', compact('clousure'));
     }
 
     /**

@@ -16,8 +16,8 @@ class CreateTrackingsTable extends Migration
         Schema::create('trackings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('ticket');
-            $table->text('files');
+            $table->text('ticket', 300);
+            $table->text('files', 300);
         });
     }
 

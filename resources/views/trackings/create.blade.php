@@ -16,7 +16,7 @@
                             <label for="ticket" class="col-md-4 col-form-label text-md-right">Exposición de motivos</label>
 
                             <div class="col-md-6">
-                                    <textarea name="ticket" class="form-control @error('ticket') is-invalid @enderror" id="ticket" cols="30" rows="3"></textarea>
+                                    <textarea name="ticket" class="form-control @error('ticket') is-invalid @enderror" id="ticket" cols="30" rows="3" required></textarea>
                             </div>
                         </div>
 
@@ -24,7 +24,7 @@
                             <label for="files" class="col-md-4 col-form-label text-md-right">Archivos</label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control @error('tittle') is-invalid @enderror" name="files" id="files" max="20" value="{{ old('files')}}">
+                                <input type="text" class="form-control @error('tittle') is-invalid @enderror" name="files" id="files" max="20" value="{{ old('files')}}">
 
                                 @if ($errors->has('files'))
                                     <span class="help-block">

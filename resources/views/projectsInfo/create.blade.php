@@ -24,9 +24,9 @@
                             <div class="col-md-6">
                                 <select name="time" class="form-control @error('time') is-invalid @enderror" id="time">
                                     <option value=""></option>
-                                    <option value="1 año">1 año</option>
-                                    <option value="3 años">3 años</option>
-                                    <option value="5 años">5 años</option>
+                                    <option value="1">1 año</option>
+                                    <option value="3">3 años</option>
+                                    <option value="5">5 años</option>
                                 </select>
                             </div>
                         </div>
@@ -58,8 +58,8 @@
                         <div class="form-group row">
                             <label for="generalObjective"  class="col-md-4 col-form-label text-md-right">Objetivo general</label>
 
-                            <div class="col-md 6">
-                                <input type="text" class="form-control @error('generalObjective') is-invalid @enderror" name="generalObjective" id="generalObjective" max="20" value="{{ old('generalObjective')}}">
+                            <div class="col-md-6">
+                                <input type="text" autocomplete="off" class="form-control @error('generalObjective') is-invalid @enderror" name="generalObjective" id="generalObjective" max="20" value="{{ old('generalObjective')}}">
                                 
                                 @if ($errors->has('generalObjective'))
                                     <span class="help-block">

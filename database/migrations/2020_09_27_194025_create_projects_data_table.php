@@ -18,10 +18,10 @@ class CreateProjectsDataTable extends Migration
             $table->timestamps();
             $table->string('tittle');
             $table->integer('sum', $autoIncrement = false);
-            $table->text('objective');
-            $table->text('addressLocation');
+            $table->text('objective', 300);
+            $table->text('addressLocation', 300);
             $table->string('area');
-            $table->text('justification');
+            $table->text('justification', 300);
             $table->string('countPoint');
         });
     }

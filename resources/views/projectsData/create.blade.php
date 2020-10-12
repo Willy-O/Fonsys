@@ -71,21 +71,9 @@
                             <div class="col-md-6">
                                 <select name="area" class="form-control @error('area') is-invalid @enderror" id="area">
                                     <option value="{{ old('area')}}">{{ old('area')}}</option>
-                                    <option value="agroalimentario">Agroalimentario</option>
-                                    <option value="farmaceutico">Farmacéutico</option>
-                                    <option value="industrial">Industrial</option>
-                                    <option value="esportador">Exportador</option>
-                                    <option value="economiaComunal">Economía Comunal, Social y Socialista</option>
-                                    <option value="hidrocarburos">Hidrocarburos</option>
-                                    <option value="petroquimico">Petroquímico</option>
-                                    <option value="minero">Minero</option>
-                                    <option value="turismo">Turismo</option>
-                                    <option value="construccion">Construcción</option>
-                                    <option value="forestal">Forestal</option>
-                                    <option value="industrialMilitar">Industrial militar</option>
-                                    <option value="telecomunicacionesEInformatica">Telecomunicaciones e informática</option>
-                                    <option value="bancaYFinanzas">Banca y finanzas</option>
-                                    <option value="industriasBasicas">Industrias Básicas, estratégicas y socialistas</option>
+                                    @foreach ($area as $item)
+                                        <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
                                 </select>
 
                                 @if ($errors->has('area'))

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectInfo extends Model
 {
-    protected $table = 'projectsInfo';
-    public $timestamps = false;
+    protected $table = 'projects_info';
+    // public $timestamps = false;
 
     protected $fillable = [
         'summary', 'time', 'problem', 'precedent', 'justification', 'generalObjective', 'specificObjetive', 'hopedResults', 'hopedEfects',

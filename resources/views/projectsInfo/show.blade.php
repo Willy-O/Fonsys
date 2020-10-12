@@ -52,7 +52,7 @@
                         <div class="form-group row">
                             <label for="generalObjective"  class="col-md-4 col-form-label text-md-right">Objetivo general</label>
 
-                            <div class="col-md 6">
+                            <div class="col-md-6">
                                 <input type="text" class="form-control @error('generalObjective') is-invalid @enderror" name="generalObjective" id="generalObjective" max="20" value="{{ $projectInfo->generalObjective }}" disabled>
                             </div>
                         </div>

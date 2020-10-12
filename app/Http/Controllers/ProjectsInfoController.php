@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\StoreProjectData;
 use App\ProjectInfo;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreProjectInfo;
 
 class ProjectsInfoController extends Controller
 {
@@ -15,7 +15,8 @@ class ProjectsInfoController extends Controller
      */
     public function index()
     {
-        return view('projectsInfo.index');
+        $projectsInfo = ProjectInfo::paginate(4);
+        return view('projectsInfo.index', compact('projectsInfo'));
     }
 
     /**
@@ -34,8 +35,10 @@ class ProjectsInfoController extends Controller
      * @param  StoreProjectInfo|Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectInfo $request)
     {
+        $validated = $request->validated();
+
         $projectInfo = new ProjectInfo;
 
         $projectInfo->summary = $request->get('summary');
@@ -50,7 +53,7 @@ class ProjectsInfoController extends Controller
 
         $projectInfo->save();
 
-        return $projectInfo->id;
+        return redirect()->route('projectsInfo.show',   ['projectInfo' => $projectInfo->id]);
     }
 
     /**
@@ -74,7 +77,8 @@ class ProjectsInfoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $projectInfo = ProjectInfo::where('id', $id)->first();
+        return view('projectInfo.edit', compact('projectInfo'));
     }
 
     /**

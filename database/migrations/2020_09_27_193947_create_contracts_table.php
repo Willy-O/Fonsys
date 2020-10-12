@@ -16,7 +16,7 @@ class CreateContractsTable extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('agreement');
+            $table->text('agreement', 300);
             $table->integer('duration', $autoIncrement = false);
         });
     }

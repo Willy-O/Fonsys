@@ -22,7 +22,7 @@
                             <label for="files" class="col-md-4 col-form-label text-md-right">Archivos</label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control @error('tittle') is-invalid @enderror" name="files" id="files" max="20" value="{{ $tracking->files }}" disabled>
+                                <input type="text" class="form-control @error('tittle') is-invalid @enderror" name="files" id="files" max="20" value="{{ $tracking->files }}" disabled>
                             </div>
                         </div>
 

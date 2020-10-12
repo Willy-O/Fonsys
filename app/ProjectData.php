@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectData extends Model
 {
-    protected $table = 'projectsData';
-    public $timestamps = false;
+    protected $table = 'projects_data';
+    // public $timestamps = false;
 
 
     protected $fillable = [
