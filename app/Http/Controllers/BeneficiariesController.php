@@ -9,6 +9,11 @@ use App\Beneficiary;
 
 class BeneficiariesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     protected $codeHomePhone = [
         248, 281, 282, 283, 292, 244, 273, 278, 284, 285, 286, 288, 289, 241, 242, 243, 245, 249, 258, 287, 212, 259, 268, 269, 279, 235, 238, 246, 247, 251, 252, 253, 271, 274, 275, 234, 239, 291, 295, 255, 256, 257, 272, 293, 294, 276, 277, 254, 261, 262, 263, 264, 265, 266, 267,
@@ -139,32 +144,34 @@ class BeneficiariesController extends Controller
      */
     public function update(StoreBeneficiary $request, $id)
     {
-        $beneficiary=request()->except('_token');
-        $validated = $request->validated();
-        $beneficiary = Beneficiary::where('id', $id)->first();
-        // $beneficiary = $request->all();
-        $beneficiary->name = $request->get('name');
-        $beneficiary->lastName = $request->get('lastName');
-        $beneficiary->gender = $request->get('gender');
-        $beneficiary->dateBorn = $request->get('dateBorn');
-        $beneficiary->email = $request->get('email');
-        $beneficiary->homeAddress = $request->get('homeAddress');
-        $beneficiary->codeCellPhone = $request->get('codeCellPhone');
-        $beneficiary->cellPhone = $request->get('cellPhone');
-        $beneficiary->codeHomePhone = $request->get('codeHomePhone');
-        $beneficiary->homePhone = $request->get('homePhone');
-        $beneficiary->education = $request->get('education');
-        $beneficiary->ethnicGroup = $request->get('ethnicGroup');
-        $beneficiary->workAddress = $request->get('workAddress');
-        $beneficiary->publicWorker = $request->get('publicWorker');
-        $beneficiary->workInstitute = $request->get('workInstitute');
-        $beneficiary->conmunity = $request->get('conmunity');
-        $beneficiary->finance = $request->get('finance');
-        $beneficiary->cedula = $request->get('cedula');
-        $beneficiary->financeType = $request->get('financeType');
-        $beneficiary->update();
+        dd($request->all());
 
-        return view('beneficiaries.show', compact('beneficiary'));
+        // $beneficiary=request()->except('_token');
+        // $validated = $request->validated();
+        // $beneficiary = Beneficiary::where('id', $id)->first();
+        // // $beneficiary = $request->all();
+        // $beneficiary->name = $request->get('name');
+        // $beneficiary->lastName = $request->get('lastName');
+        // $beneficiary->gender = $request->get('gender');
+        // $beneficiary->dateBorn = $request->get('dateBorn');
+        // $beneficiary->email = $request->get('email');
+        // $beneficiary->homeAddress = $request->get('homeAddress');
+        // $beneficiary->codeCellPhone = $request->get('codeCellPhone');
+        // $beneficiary->cellPhone = $request->get('cellPhone');
+        // $beneficiary->codeHomePhone = $request->get('codeHomePhone');
+        // $beneficiary->homePhone = $request->get('homePhone');
+        // $beneficiary->education = $request->get('education');
+        // $beneficiary->ethnicGroup = $request->get('ethnicGroup');
+        // $beneficiary->workAddress = $request->get('workAddress');
+        // $beneficiary->publicWorker = $request->get('publicWorker');
+        // $beneficiary->workInstitute = $request->get('workInstitute');
+        // $beneficiary->conmunity = $request->get('conmunity');
+        // $beneficiary->finance = $request->get('finance');
+        // $beneficiary->cedula = $request->get('cedula');
+        // $beneficiary->financeType = $request->get('financeType');
+        // $beneficiary->save();
+
+        // return view('beneficiaries.show', compact('beneficiary'));
     }
 
     /**

@@ -54,6 +54,94 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
+                                <ul class="navbar-nav mr-auto">
+                                    @if (Auth::check())
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Usuario
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('users.create') }}">Registrar</a>
+                                        <a class="dropdown-item" href="#">Buscar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ route('users.index')}}">Lista</a>
+                                      </div>
+                                    </li>
+                              
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Beneficiario
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('beneficiaries.create') }}">Registrar</a>
+                                        <a class="dropdown-item" href="#">Buscar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                      </div>
+                                    </li>
+                              
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Datos de proyecto
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('projectsData.create') }}">Registrar</a>
+                                        <a class="dropdown-item" href="#">Buscar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                      </div>
+                                    </li>
+                              
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Información de proyecto
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('projectsInfo.create') }}">Registrar</a>
+                                        <a class="dropdown-item" href="#">Buscar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                      </div>
+                                    </li>
+                              
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Seguimiento de proyecto
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('trackings.create') }}">Registrar</a>
+                                        <a class="dropdown-item" href="#">Buscar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                      </div>
+                                    </li>
+                              
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Cierre de proyecto
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('clousures.create') }}">Registrar</a>
+                                        <a class="dropdown-item" href="#">Buscar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                      </div>
+                                    </li>
+                            
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Auditoria
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('pdf') }}">PDF</a>
+                                        <a class="dropdown-item" href="#">Buscar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                      </div>
+                                    </li>
+                                    @endif
+                                </ul>
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

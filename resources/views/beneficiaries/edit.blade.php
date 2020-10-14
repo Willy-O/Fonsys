@@ -4,13 +4,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Beneficiarios') }}</div>
+                    <div class="card-header">{{ __('Beneficiaries') }}</div>
 
                     <div class="card-body">
-                        <form action="{{ route('beneficiaries.update', $beneficiary->id)}}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('PUT') }}
-
+                        <form action="{{ route('beneficiaries.update', $beneficiary->id)}}" method="PUT">
+                            @csrf
+                            {{-- {{ method_field('PUT') }} --}}
 
                             
                             <div class="form-group row">
