@@ -65,7 +65,13 @@
                             <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
 
                             <div class="col-md-6">
-                                <input id="rol" type="rol" class="form-control @error('rol') is-invalid @enderror" name="rol" value="{{ $roles }}" required autocomplete="rol">
+
+                                <select name="rol" class="form-control @error('rol') is-invalid @enderror" id="rol" value="{{ old('rol')}}">
+                                    <option value="{{ old('rol') }}">{{ old('rol')}}</option>
+                                    @foreach ($roles as $rol)
+                                        <option value="{{$rol}}">{{$rol}}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('rol')
                                     <span class="invalid-feedback" role="alert">

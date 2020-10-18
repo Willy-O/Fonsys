@@ -124,7 +124,7 @@
                                         
                                         <span class="col-md-1"></span>
 
-                                        <input type="number" autocomplete="off" name="cellPhone" class="form-control col-md-6 @error('cellPhone') is-invalid @enderror" id="cellPhone" min="0" max="9999999" maxlength="7" pattern="[0-9]" value="{{ old('cellPhone')}}">
+                                        <input type="number" autocomplete="off" name="cellPhone" class="form-control col-md-6 @error('cellPhone') is-invalid @enderror" id="cellPhone" min="0" max="999999" maxlength="7" pattern="[0-9]" value="{{ old('cellPhone')}}">
                                     </div>
                                    
                                     @if ($errors->has('codeCellPhone'))
