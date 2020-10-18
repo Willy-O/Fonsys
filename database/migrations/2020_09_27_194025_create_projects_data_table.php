@@ -23,6 +23,12 @@ class CreateProjectsDataTable extends Migration
             $table->string('area');
             $table->text('justification', 300);
             $table->string('countPoint');
+            $table->string('status');
+            $table->foreignId('beneficiaries_id')->references('id')->on('beneficiaries');
+            // $table->foreignId('projects_info_id')->references('id')->on('projects_info');
+            $table->foreignId('clousures_id')->references('id')->on('clousures');
+            // $table->foreignId('trackings_id')->references('id')->on('trackings');
+            $table->foreignId('contracts_id')->references('id')->on('contracts');
         });
     }
 

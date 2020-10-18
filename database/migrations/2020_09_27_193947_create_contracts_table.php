@@ -18,6 +18,7 @@ class CreateContractsTable extends Migration
             $table->timestamps();
             $table->text('agreement', 300);
             $table->integer('duration', $autoIncrement = false);
+            // $table->foreignId('projects_data_id')->references('id')->on('projects_data');
         });
     }
 

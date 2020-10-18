@@ -35,6 +35,7 @@ class CreateBeneficiariesTable extends Migration
             $table->string('financeType');
             $table->string('gender', 2);
             $table->integer('cedula',$autoIncrement = false, 10)->unique();
+            // $table->foreignId('projects_data_id')->references('id')->on('projects_data');
 
             // Foreing keys
 
