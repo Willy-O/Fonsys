@@ -34,7 +34,6 @@ class TrackingsController extends Controller
     public function create()
     {
         $projectsData = DB::table('projects_data')->pluck('id', 'tittle');
-
         return view('trackings.create', compact('projectsData'));
     }
 

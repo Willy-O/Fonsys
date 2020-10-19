@@ -9,7 +9,7 @@ class Contract extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'agreement', 'duration',
+        'agreement', 'duration', 'project_data_id'
     ];
 
     public function ProjectData_contract()

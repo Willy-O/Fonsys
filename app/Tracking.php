@@ -9,7 +9,7 @@ class Tracking extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ticket', 'files', 'projects_data_id'
+        'ticket', 'files', 'project_data_id'
     ];
 
     public function ProjectsData_tracking()

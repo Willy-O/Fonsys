@@ -10,7 +10,7 @@ class ProjectInfo extends Model
     // public $timestamps = false;
 
     protected $fillable = [
-        'summary', 'time', 'problem', 'precedent', 'justification', 'generalObjective', 'specificObjetive', 'hopedResults', 'hopedEfects',
+        'summary', 'time', 'problem', 'precedent', 'justification', 'generalObjective', 'specificObjetive', 'hopedResults', 'hopedEfects', 'project_data_id'
     ];
 
     public function ProjectsData_info()

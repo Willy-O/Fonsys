@@ -9,7 +9,7 @@ class Clousure extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'results', 'efects',
+        'results', 'efects', 'project_data_id'
     ];
 
     public function ProjectData_clousure()
