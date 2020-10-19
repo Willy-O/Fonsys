@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('select2-4.0.13/dist/css/select2.css') }}">
+@endsection
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -9,6 +13,24 @@
                 <div class="card-body">
                     <form action="{{ route('projectsData.store')}}" method="POST">
                         {{ csrf_field() }}
+
+                        <div class="form-group row">
+                            <label for="beneficiary_id" class="col-md-4 col-form-label text-md-right">Beneficiario</label>
+                            <div class="col-md-6 ">
+                                <select name="beneficiary_id" id="beneficiary_id" class="form-control">
+                                    <option value="">Seleccione un beneficiario</option>
+                                    @foreach ($beneficiaries as $beneficiary_id => $beneficiary_cedula)
+                                        <option value="{{ $beneficiary_id }}">{{ $beneficiary_cedula }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('beneficiary_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('beneficiary_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="tittle" class="col-md-4 col-form-label text-md-right">Titulo</label>
@@ -120,4 +142,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}" ></script>
+    <script src="{{ asset('select2-4.0.13/dist/js/select2.js') }}" ></script>
+    <script type="text/javascript">
+        $("#beneficiary_id").select2({ });
+    </script>
 @endsection

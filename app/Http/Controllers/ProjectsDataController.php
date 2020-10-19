@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ProjectData;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectData;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsDataController extends Controller
 {
@@ -36,7 +37,8 @@ class ProjectsDataController extends Controller
             'Agroalimentario', 'Farmaceutico', 'Industrial', 'Esportador', 'Economia comunal', 'Hidrocarburos', 'Petroquimico', 'Minero', 'Turismo', 'Construccion', 'Forestal', 'Industrial militar', 'Telecomunicaciones e informatica', 'Banca y finanzas', 'Industrias basicas'
         ];
 
-        return view('projectsData.create', compact('area'));
+        $beneficiaries = DB::table('beneficiaries')->pluck('cedula', 'id');
+        return view('projectsData.create', compact('area', 'beneficiaries'));
     }
 
     /**

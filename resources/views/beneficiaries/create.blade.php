@@ -293,4 +293,6 @@
             </div>
         </div>
     @endsection
+
+
 @extends('layouts.foot')

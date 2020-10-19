@@ -18,7 +18,7 @@ class CreateTrackingsTable extends Migration
             $table->timestamps();
             $table->text('ticket', 300);
             $table->text('files', 300);
-            $table->foreignId('projects_data_id')->references('id')->on('projects_data');
+            $table->foreignId('project_data_id')->references('id')->on('projects_data');
         });
     }
 

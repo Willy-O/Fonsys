@@ -24,6 +24,7 @@ class StoreTracking extends FormRequest
     public function rules()
     {
         return [
+            'project' => 'required|number|min:1',
             'ticket' => 'required|min:3|string',
             'files' => 'required|min:4|string',
         ];

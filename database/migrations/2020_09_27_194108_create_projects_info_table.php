@@ -25,7 +25,7 @@ class CreateProjectsInfoTable extends Migration
             $table->text('specificObjective', 300);
             $table->text('hopedResults', 300);
             $table->text('hopedEfects', 300);
-            $table->foreignId('projects_data_id')->references('id')->on('projects_data');
+            $table->foreignId('project_data_id')->references('id')->on('projects_data');
         });
     }
 

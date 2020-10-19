@@ -109,8 +109,8 @@ class BeneficiariesController extends Controller
      */
     public function show($id)
     {
+        
         $beneficiary = Beneficiary::find($id);
-
         return view('beneficiaries.show', compact('beneficiary'));
     }
 

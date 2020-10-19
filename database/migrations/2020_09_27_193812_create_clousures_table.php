@@ -18,7 +18,7 @@ class CreateClousuresTable extends Migration
             $table->timestamps();
             $table->text('results', 300);
             $table->text('efects', 300);
-            // $table->foreignId('projects_data_id')->references('id')->on('projects_data');
+            $table->foreignId('project_data_id')->references('id')->on('projects_data');
         });
     }
 
