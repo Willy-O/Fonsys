@@ -31,6 +31,7 @@ class StoreProjectData extends FormRequest
             'area' => 'required|max:50|string',
             'justification' => 'min:5|string',
             'countPoint' => 'required|string',
+            'beneficiary_id' => 'required|min:1|numeric'
         ];
     }
 }

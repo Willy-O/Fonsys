@@ -11,7 +11,7 @@ class ProjectData extends Model
 
 
     protected $fillable = [
-        'tittle', 'sum', 'objective', 'addressLocation', 'area', 'justification', 'countPoint', 'beneficiary_id'
+        'tittle', 'sum', 'objective', 'addressLocation', 'area', 'justification', 'countPoint', 'beneficiary_id', 'status'
     ];
 
     public function Beneficiary()

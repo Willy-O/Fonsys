@@ -59,6 +59,7 @@ class ProjectsDataController extends Controller
         $projectData->area = $request->get('area');
         $projectData->justification = $request->get('justification');
         $projectData->countPoint = $request->get('countPoint');
+        $projectData->beneficiary_id = $request->get('beneficiary_id');
 
         $projectData->save();
 
