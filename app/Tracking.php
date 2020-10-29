@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tracking extends Model
 {
-    public $timestamps = false;
+    // public $timestamps = false;
 
     protected $fillable = [
         'ticket', 'files', 'project_data_id'

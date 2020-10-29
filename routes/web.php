@@ -102,9 +102,9 @@ Route::group(['prefix' => 'cierre'], function(){
     Route::get('/', 'ClousuresController@index')->name('clousures.index');
     Route::get('crear', 'ClousuresController@create')->name('clousures.create');
     Route::post('/', 'ClousuresController@store')->name('clousures.store');
-    Route::get('{clousure}', 'ClousuresController@show')->name('clousures.show');
     Route::get('{clousure}/editar', 'ClousuresController@edit')->name('clousures.edit');
     Route::put('{clousure}', 'ClousuresController@update')->name('clousures.update');
+    Route::get('{clousure}', 'ClousuresController@show')->name('clousures.show');
     Route::delete('{clousure}', 'ClousuresController@destroy')->name('clousures.destroy');
 });
 

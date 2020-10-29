@@ -11,7 +11,7 @@
                     <form>
 
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Project title') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" value="{{ $project_title }}" disabled>

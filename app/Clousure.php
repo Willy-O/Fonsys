@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clousure extends Model
 {
-    public $timestamps = false;
+    // public $timestamps = false;
 
     protected $fillable = [
         'results', 'efects', 'project_data_id'

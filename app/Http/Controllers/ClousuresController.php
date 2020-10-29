@@ -35,7 +35,7 @@ class ClousuresController extends Controller
     public function create()
     {
         $titles = ProjectData::pluck('tittle', 'id');
-        // dd($titles);
+
         return view('clousures.create', compact('titles'));
     }
 
@@ -82,7 +82,9 @@ class ClousuresController extends Controller
     public function edit($id)
     {
         $clousure = Clousure::where('id', $id)->first();
-        return view('clousures.edit', compact('clousure'));
+        $project_title = ProjectData::find($clousure->project_data_id)->pluck('tittle', 'id');
+        
+        return view('clousures.edit', compact('clousure', 'project_title'));
     }
 
     /**
@@ -92,9 +94,12 @@ class ClousuresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Clousure $clousure, StoreClousure $request)
+    {   
+        $clousure->update($request->validated());
+        $project_title = ProjectData::find(request('project_title'))->value('tittle');
+
+        return view('clousures.show', compact('clousure', 'project_title'));
     }
 
     /**
