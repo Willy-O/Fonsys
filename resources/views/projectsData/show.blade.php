@@ -64,7 +64,7 @@
                                 <input type="text" class="form-control @error('countPoint') is-invalid @enderror" name="countPoint" id="countPoint" max="20" value="{{ $projectData->countPoint }}" disabled>
                             </div>
                         </div>
-                        
+                        @include('partials.inputHome')
                     </form>
                 </div>
                 </div>

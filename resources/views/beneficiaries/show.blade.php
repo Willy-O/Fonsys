@@ -252,6 +252,7 @@
                                     disabled="disabled">
                                 </div>
                             </div>
+                            @include('partials.inputHome')
                         </form>
                     </div>
                 </div>

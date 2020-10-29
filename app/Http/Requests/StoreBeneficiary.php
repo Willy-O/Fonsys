@@ -13,7 +13,9 @@ class StoreBeneficiary extends FormRequest
      */
     public function authorize()
     {
+        // $this->user()->hasRole('Administrador');
         return true;
+        
     }
 
     /**

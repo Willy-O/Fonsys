@@ -7,7 +7,6 @@ use App\ProjectData;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreClousure;
 
-
 class ClousuresController extends Controller
 {
 
@@ -49,9 +48,10 @@ class ClousuresController extends Controller
     public function store(StoreClousure $request)
     {
         $clousure = new Clousure;
-
+        
         $validated = $request->validated();
-
+        
+        $clousure->project_data_id = $request->get('project_title');
         $clousure->results = $request->get('results');
         $clousure->efects = $request->get('efects');
 
@@ -69,8 +69,8 @@ class ClousuresController extends Controller
     public function show($id)
     {
         $clousure = Clousure::find($id);
-
-        return view('clousures.show', compact('clousure'));
+        $project_title = ProjectData::find($clousure->project_data_id)->value('tittle');
+        return view('clousures.show', compact('clousure', 'project_title'));
     }
 
     /**

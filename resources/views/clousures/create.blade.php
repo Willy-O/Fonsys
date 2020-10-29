@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('select2-4.0.13/dist/css/select2.css') }}">
+@endsection
 
 @section('content')
     <div class="row justify-content-center">
@@ -12,11 +15,11 @@
                         {{ csrf_field() }}
 
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">Titulo del proyecto</label>
+                            <label for="title_id" class="col-md-4 col-form-label text-md-right">Titulo del proyecto</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="title" id="title">
-                                    <option value=""></option>
+                                <select class="form-control" name="project_title" id="title_id">
+                                    <option value="">Seleccione un projecto</option>
                                     @foreach ($titles as $id =>$title)
                                         <option value="{{$id}}">{{$title}}</option>                                    
                                     @endforeach
@@ -59,4 +62,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}" ></script>
+    <script src="{{ asset('select2-4.0.13/dist/js/select2.js') }}" ></script>
+    <script type="text/javascript">
+        $("#title_id").select2({ });
+    </script>
 @endsection
