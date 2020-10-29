@@ -24,7 +24,7 @@ class Beneficiary extends Model
         'workAddress', 
         'publicWorker', 
         'workInstitute', 
-        'conmunity', 
+        'community', 
         'finance', 
         'typeFinance',
         'gender', 

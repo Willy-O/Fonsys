@@ -30,7 +30,7 @@ class CreateBeneficiariesTable extends Migration
             $table->text('workAddress', 300)->nullable();
             $table->string('publicWorker',2);
             $table->text('workInstitute', 300)->nullable();
-            $table->string('conmunity', 300);
+            $table->string('community', 300);
             $table->string('finance', 2);
             $table->string('financeType');
             $table->string('gender', 2);

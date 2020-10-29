@@ -60,7 +60,10 @@ class BeneficiariesController extends Controller
 
         $ethnicGroup = $this->ethnicGroup;
 
-        return view('beneficiaries.create', compact('codeHomePhone', 'codeCellPhone', 'education', 'ethnicGroup'));
+        $beneficiary = new Beneficiary();
+
+
+        return view('beneficiaries.create', compact('codeHomePhone', 'codeCellPhone', 'education', 'ethnicGroup', 'beneficiary'));
     }
 
     /**
@@ -90,7 +93,7 @@ class BeneficiariesController extends Controller
         $beneficiary->workAddress = $request->get('workAddress');
         $beneficiary->publicWorker = $request->get('publicWorker');
         $beneficiary->workInstitute = $request->get('workInstitute');
-        $beneficiary->conmunity = $request->get('conmunity');
+        $beneficiary->community = $request->get('community');
         $beneficiary->finance = $request->get('finance');
         $beneficiary->cedula = $request->get('cedula');
         $beneficiary->financeType = $request->get('financeType');
@@ -110,8 +113,16 @@ class BeneficiariesController extends Controller
     public function show($id)
     {
         
+        $codeHomePhone = $this->codeHomePhone;
+
+        $codeCellPhone = $this->codeCellPhone;
+
+        $education = $this->education;
+
+        $ethnicGroup = $this->ethnicGroup;
+
         $beneficiary = Beneficiary::find($id);
-        return view('beneficiaries.show', compact('beneficiary'));
+        return view('beneficiaries.show', compact('codeHomePhone', 'codeCellPhone', 'education', 'ethnicGroup', 'beneficiary'));
     }
 
     /**
