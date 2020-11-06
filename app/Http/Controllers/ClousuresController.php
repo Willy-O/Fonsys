@@ -34,9 +34,10 @@ class ClousuresController extends Controller
      */
     public function create()
     {
-        $titles = ProjectData::pluck('tittle', 'id');
+        $project_title = ProjectData::pluck('tittle', 'id');
+        $clousure = new Clousure;
 
-        return view('clousures.create', compact('titles'));
+        return view('clousures.create', compact('clousure', 'project_title'));
     }
 
     /**
@@ -69,7 +70,8 @@ class ClousuresController extends Controller
     public function show($id)
     {
         $clousure = Clousure::find($id);
-        $project_title = ProjectData::find($clousure->project_data_id)->value('tittle');
+        $project_title = ProjectData::find($clousure->project_data_id)->pluck('tittle', 'id');
+        
         return view('clousures.show', compact('clousure', 'project_title'));
     }
 
@@ -82,7 +84,7 @@ class ClousuresController extends Controller
     public function edit($id)
     {
         $clousure = Clousure::where('id', $id)->first();
-        $project_title = ProjectData::find($clousure->project_data_id)->pluck('tittle', 'id');
+        $project_title = ProjectData::where('id', $clousure->project_data_id)->get('tittle');
         
         return view('clousures.edit', compact('clousure', 'project_title'));
     }

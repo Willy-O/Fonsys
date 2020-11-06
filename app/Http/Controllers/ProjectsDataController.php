@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 class ProjectsDataController extends Controller
 {
 
+    protected $area = [
+        'Agroalimentario', 'Farmaceutico', 'Industrial', 'Esportador', 'Economia comunal', 'Hidrocarburos', 'Petroquimico', 'Minero', 'Turismo', 'Construccion', 'Forestal', 'Industrial militar', 'Telecomunicaciones e informatica', 'Banca y finanzas', 'Industrias basicas'
+    ];
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -33,12 +37,12 @@ class ProjectsDataController extends Controller
      */
     public function create()
     {
-        $area = [
-            'Agroalimentario', 'Farmaceutico', 'Industrial', 'Esportador', 'Economia comunal', 'Hidrocarburos', 'Petroquimico', 'Minero', 'Turismo', 'Construccion', 'Forestal', 'Industrial militar', 'Telecomunicaciones e informatica', 'Banca y finanzas', 'Industrias basicas'
-        ];
+
+        $area = $this->area;
+        $projectData = new ProjectData;
 
         $beneficiaries = DB::table('beneficiaries')->pluck('cedula', 'id');
-        return view('projectsData.create', compact('area', 'beneficiaries'));
+        return view('projectsData.create', compact('area', 'beneficiaries', 'projectData'));
     }
 
     /**
@@ -75,9 +79,13 @@ class ProjectsDataController extends Controller
      */
     public function show($id)
     {
-        $projectData = ProjectData::find($id);
 
-        return view('projectsData.show', compact('projectData'));
+        $area = $this->area;
+
+        $projectData = ProjectData::find($id);
+        $beneficiaries = DB::table('beneficiaries')->pluck('cedula', 'id');
+
+        return view('projectsData.show', compact('projectData', 'area', 'beneficiaries'));
     }
 
     /**
@@ -88,8 +96,12 @@ class ProjectsDataController extends Controller
      */
     public function edit($id)
     {
+        $area = $this->area;
+
         $projectData = ProjectData::where('id', $id)->first();
-        return view('projectsData.edit', compact('projectData'));
+        $beneficiaries = DB::table('beneficiaries')->pluck('cedula', 'id');
+
+        return view('projectsData.edit', compact('projectData', 'area', 'beneficiaries'));
     }
 
     /**
@@ -99,9 +111,14 @@ class ProjectsDataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectData $projectData , StoreProjectData $request)
     {
-        //
+        $area = $this->area;
+
+        $projectData->update($request->validated());
+        $beneficiaries = DB::table('beneficiaries')->pluck('cedula', 'id');
+        
+        return view('projectsData.show', compact('projectData', 'area', 'beneficiaries'));
     }
 
     /**

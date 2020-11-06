@@ -153,36 +153,11 @@ class BeneficiariesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreBeneficiary $request, $id)
+    public function update(Beneficiary $beneficiary, StoreBeneficiary $request)
     {
-        dd($request->all());
+        $beneficiary->update($request->validated());
 
-        // $beneficiary=request()->except('_token');
-        // $validated = $request->validated();
-        // $beneficiary = Beneficiary::where('id', $id)->first();
-        // // $beneficiary = $request->all();
-        // $beneficiary->name = $request->get('name');
-        // $beneficiary->lastName = $request->get('lastName');
-        // $beneficiary->gender = $request->get('gender');
-        // $beneficiary->dateBorn = $request->get('dateBorn');
-        // $beneficiary->email = $request->get('email');
-        // $beneficiary->homeAddress = $request->get('homeAddress');
-        // $beneficiary->codeCellPhone = $request->get('codeCellPhone');
-        // $beneficiary->cellPhone = $request->get('cellPhone');
-        // $beneficiary->codeHomePhone = $request->get('codeHomePhone');
-        // $beneficiary->homePhone = $request->get('homePhone');
-        // $beneficiary->education = $request->get('education');
-        // $beneficiary->ethnicGroup = $request->get('ethnicGroup');
-        // $beneficiary->workAddress = $request->get('workAddress');
-        // $beneficiary->publicWorker = $request->get('publicWorker');
-        // $beneficiary->workInstitute = $request->get('workInstitute');
-        // $beneficiary->conmunity = $request->get('conmunity');
-        // $beneficiary->finance = $request->get('finance');
-        // $beneficiary->cedula = $request->get('cedula');
-        // $beneficiary->financeType = $request->get('financeType');
-        // $beneficiary->save();
-
-        // return view('beneficiaries.show', compact('beneficiary'));
+        return view('beneficiaries.show', compact('beneficiary'));
     }
 
     /**

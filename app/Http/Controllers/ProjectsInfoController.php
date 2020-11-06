@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProjectData;
 use App\ProjectInfo;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectInfo;
@@ -32,7 +33,10 @@ class ProjectsInfoController extends Controller
      */
     public function create()
     {
-        return view('projectsInfo.create');
+        $projectInfo = new ProjectInfo;
+        $project_title = ProjectData::pluck('tittle', 'id');
+        
+        return view('projectsInfo.create', compact('projectInfo','project_title'));
     }
 
     /**
@@ -56,6 +60,7 @@ class ProjectsInfoController extends Controller
         $projectInfo->specificObjective = $request->get('specificObjective');
         $projectInfo->hopedResults = $request->get('hopedResults');
         $projectInfo->hopedEfects = $request->get('hopedEfects');
+        $projectInfo->project_data_id = $request->get('project_title');
 
         $projectInfo->save();
 
@@ -71,8 +76,9 @@ class ProjectsInfoController extends Controller
     public function show($id)
     {
         $projectInfo = ProjectInfo::find($id);
+        $project_title = ProjectData::find($projectInfo->project_data_id)->pluck('tittle', 'id');
 
-        return view('projectsInfo.show', compact('projectInfo'));
+        return view('projectsInfo.show', compact('projectInfo', 'project_title'));
     }
 
     /**
@@ -84,7 +90,9 @@ class ProjectsInfoController extends Controller
     public function edit($id)
     {
         $projectInfo = ProjectInfo::where('id', $id)->first();
-        return view('projectInfo.edit', compact('projectInfo'));
+        $project_title = ProjectData::where('id', $projectInfo->project_data_id)->get('tittle');
+
+        return view('projectsInfo.edit', compact('projectInfo', 'project_title'));
     }
 
     /**
@@ -94,9 +102,12 @@ class ProjectsInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProjectInfo $projectInfo, StoreProjectInfo $request)
     {
-        //
+        $projectInfo->update($request->validated());
+        $project_title = ProjectData::find($projectInfo->project_data_id)->pluck('tittle', 'id');
+        
+        return view('projectsInfo.show', compact('projectInfo', 'project_title'));
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Tracking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreTracking;
+use App\ProjectData;
 
 class TrackingsController extends Controller
 {
@@ -33,8 +34,10 @@ class TrackingsController extends Controller
      */
     public function create()
     {
-        $projectsData = DB::table('projects_data')->pluck('id', 'tittle');
-        return view('trackings.create', compact('projectsData'));
+        $projectsData = ProjectData::pluck('tittle', 'id');
+        $tracking = new Tracking;
+
+        return view('trackings.create', compact('projectsData', 'tracking'));
     }
 
     /**
@@ -46,7 +49,6 @@ class TrackingsController extends Controller
     public function store(StoreTracking $request)
     {
         $validated = $request->validated();
-
 
         $tracking = new Tracking;
         $tracking->ticket = $request->get('ticket');

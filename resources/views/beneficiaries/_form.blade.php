@@ -1,4 +1,6 @@
-@csrf
+@if ($type === 'edit' || $type === 'created')
+    @csrf
+@endif
 
 <div class="form-group row">
     <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
